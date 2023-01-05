@@ -20,7 +20,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-.center {
+#center {
 display: flex;
 justify-content: center;
 align-items: center;
@@ -40,26 +40,31 @@ height: 50px;
 
 .one {
   top: 0;
+  transition: top 1s linear, transform .5s linear 1.5s;
+
 }
 
 .two {
   top: 50%;
-  transform: translateY(-50%)
+  transform: translateY(-50%);
+  transition: transform .5s linear 1.5s;
 }
 .three {
   bottom: 0;
+  transition: bottom 1s linear,transform .5s linear 1.5s;
 }
 
-.center:hover .line {
-  animation: move 1s linear;
+#center.active .one {
+  top: 50%;
+  transform:   rotate(45deg);
 }
 
-@keyframes move {
-  30% {
-    top: 50%;
-  transform: translateY(-50%)
-  }
-  60% {
-    
-  }
+#center.active .three {
+  bottom: 50%;
+  transform: rotate(-45deg) translateY(50%);
 }
+
+#center.active .two {
+  transform: rotate(45deg);
+}
+
